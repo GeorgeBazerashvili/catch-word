@@ -66,11 +66,11 @@ let wordsArr = [
 let randomNum = Math.floor(Math.random() * wordsArr.length);
 let randomWord = wordsArr[randomNum];
 
-const stageOne = 1500;
-const stageTwo = 1200;
-const stageThree = 500;
-const stageFour = 700;
-const stageFive = 400;
+let stageOne = 1500;
+let stageTwo = 900;
+let stageThree = 100;
+let stageFour = 700;
+let stageFive = 400;
 
 let time = document.getElementById("time");
 const input = document.getElementById("input");
@@ -83,12 +83,10 @@ let stage = document.getElementById("stage");
 var score1 = 0;
 var stage1 = 1;
 
-var interval = setInterval(minusTime, 1500);
-
 words.innerText = randomWord;
 
 function stopInterval() {
-  clearInterval(interval);
+  clearInterval(interval1);
 }
 
 function minusTime() {
@@ -99,13 +97,13 @@ function minusTime() {
   }
 }
 
+var interval1 = setInterval(minusTime, stageOne);
+
+let stageCounter = 0;
+
 document.addEventListener("keyup", (e) => {
   if (e.keyCode == 13) {
     if (input.value == words.innerText) {
-      clearInterval(interval);
-      var interval1 = setInterval(() => {
-        minusTime();
-      }, stageOne);
       input.value = "";
       let randomNum = Math.floor(Math.random() * wordsArr.length);
       let randomWord = wordsArr[randomNum];
@@ -114,34 +112,27 @@ document.addEventListener("keyup", (e) => {
       time.innerText = `${startTime}s`;
       score1++;
       score.innerText = `Score: ${score1}`;
-    } else if (score.innerText.includes(5)) {
-      clearInterval(interval1);
-      stage1++;
-      stage.innerText = `Stage: ${stage1}`;
-      var interval2 = setInterval(() => {
-        minusTime();
-      }, stageTwo);
-    } else if (score.innerText.includes(10)) {
-      clearInterval(interval2);
-      stage1++;
-      stage.innerText = `Stage: ${stage1}`;
-      var interval3 = setInterval(() => {
-        minusTime();
-      }, stageThree);
-    } else if (score.innerText.includes(15)) {
-      clearInterval(interval3);
-      stage1++;
-      stage.innerText = `Stage: ${stage1}`;
-      var interval4 = setInterval(() => {
-        minusTime();
-      }, stageFour);
-    } else if (score.innerText.includes(5)) {
-      clearInterval(interval4);
-      stage1++;
-      stage.innerText = `Stage: ${stage1}`;
-      var interval5 = setInterval(() => {
-        minusTime();
-      }, stageFive);
+
+      // Increment the stage every 5 score points
+      if (score1 % 5 == 0) {
+        stageCounter++;
+        stage1++;
+        stage.innerText = `Stage: ${stage1}`;
+      }
+
+      if (stageCounter == 1) {
+        stopInterval();
+        interval1 = setInterval(minusTime, stageTwo);
+      } else if (stageCounter == 2) {
+        stopInterval();
+        interval1 = setInterval(minusTime, stageThree);
+      } else if (stageCounter == 3) {
+        stopInterval();
+        interval1 = setInterval(minusTime, stageFour);
+      } else if (stageCounter == 4) {
+        stopInterval();
+        interval1 = setInterval(minusTime, stageFive);
+      }
     }
   }
 });
