@@ -73,6 +73,41 @@ h2 {
     text-shadow: 2px 2px 2px black;
 }
 
+#gameover {
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    height: 50%;
+    background-color: none;
+    border: 2px solid white;
+    position: absolute;
+    bottom: 50%;
+    left: 30%;
+    transform: translateX(50%);
+    transform: translateY(50%);
+    z-index: 200;
+    background:#0093E9;
+    border-radius: 10px;
+}
+
+#gameover p {
+    font-size: 2rem;
+    color: white;
+}
+
+#gameover button {
+    font-size: 1.3rem;
+    padding: .7em;
+    margin-top: 1.2em;
+    border: 2px solid white;
+    color: white;
+    background: none;
+    border-radius: 5px;
+}
+
 @media (max-width: 500px) {
     .section1 {
         font-size: 1.4rem;

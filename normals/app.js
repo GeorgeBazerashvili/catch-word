@@ -66,9 +66,11 @@ let wordsArr = [
 let randomNum = Math.floor(Math.random() * wordsArr.length);
 let randomWord = wordsArr[randomNum];
 
-let stageOne = 1500;
-let stageTwo = 900;
-let stageThree = 100;
+let gameOverMenu = document.getElementById("gameover");
+
+let stageOne = 100;
+let stageTwo = 1300;
+let stageThree = 1000;
 let stageFour = 700;
 let stageFive = 400;
 
@@ -104,6 +106,17 @@ let stageCounter = 0;
 document.addEventListener("keyup", (e) => {
   if (e.keyCode == 13) {
     if (input.value == words.innerText) {
+      let p = document.createElement("p");
+      time.append(p);
+      p.innerText = +1;
+      setTimeout(() => {
+        p.style.display = "none";
+      }, 700);
+      time.style.color = "green";
+      time.style.transition = ".5s";
+      setTimeout(() => {
+        time.style.color = "";
+      }, 700);
       input.value = "";
       let randomNum = Math.floor(Math.random() * wordsArr.length);
       let randomWord = wordsArr[randomNum];
@@ -132,6 +145,9 @@ document.addEventListener("keyup", (e) => {
       } else if (stageCounter == 4) {
         stopInterval();
         interval1 = setInterval(minusTime, stageFive);
+      }
+      if (startTime == 0) {
+        gameOverMenu.style.visibility = "visible";
       }
     }
   }
