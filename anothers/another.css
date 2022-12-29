@@ -12,8 +12,8 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    background-color: #21D4FD;
-    background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
+    background-color: #0093E9;
+    background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
 }
 
 .section1 {
@@ -23,35 +23,44 @@ body {
 
 a {
     text-decoration: none;
-    color: black;
 }
 
 h1 {
     font-size: 3rem;
-    color: rgb(20, 242, 194);
+    color: white;
     margin-bottom: 1rem;
+    text-shadow: 2px 2px 2px black;
 }
 
 button {
     padding-block: .5em;
     font-size: 1.4rem;
-    border: 2px solid rgb(13, 236, 188);
+    border: 2px solid white;
     background: none;
     border-radius: 10px;
     cursor: pointer;
+    transition: .5s
+}
+
+button:hover {
+    background-color: #3b99cf;
+    transition: .5s;
+    text-shadow: 2px 2px 2px black;
+    box-shadow: 2px 2px 2px black;
 }
 
 span {
-    color: rgb(20, 239, 192);
+    color: white;
 }
 
 footer {
     position: absolute;
     bottom: 5px;
-    color: rgb(69, 107, 196);
+    color: white;
     user-select: none;
     width: 100%;
     font-size: .9rem;
+    text-shadow: 2px 2px 2px black;
 }
 
 @media (max-width: 500px) {
