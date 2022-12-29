@@ -1,0 +1,22 @@
+@font-face {
+    font-family: myFont;
+    src: url("./fonts/Freshman.ttf");
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: myFont;
+}
+
+.section1 {
+    display: flex;
+    justify-content: space-between;
+    width: 95%;
+    margin: 1% auto;
+    font-size: 1.4em;
+}
