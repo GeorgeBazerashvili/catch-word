@@ -1,3 +1,19 @@
+// shemdegi updateis taskebi:
+// davamatot autofocus inputs
+// gavasworot ricxvebi zevit
+// davamatot win funqciac
+// yovel xut qulaze 0.9 ze gaamravlot cooldown
+// bolo stage 350 ze shevcvalot 100 is nacvlad
+// davamatot update log
+// vnaxot jortis videoc
+// add more words
+
+////////////////////////////////////////////////////////////////////////////////////////////
+
+// general update idea:
+// add sounds
+// make sound speed faster after new stage
+
 let wordsArr = [
   "refund",
   "double",
