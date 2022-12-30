@@ -97,7 +97,7 @@ h2 {
     border: 2px solid white;
     position: absolute;
     z-index: 200;
-    background:#0093E9;
+    background: #0093E9;
     border-radius: 10px;
     left: 0;
     right: 0;
@@ -126,7 +126,7 @@ h2 {
     cursor: pointer;
 }
 
-#playagain a{
+#playagain a {
     text-decoration: none;
     color: white;
 }
@@ -141,7 +141,7 @@ h2 {
     color: white;
 }
 
-#home {
+.home {
     color: white;
 }
 
