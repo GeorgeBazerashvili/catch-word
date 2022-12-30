@@ -75,7 +75,8 @@ let stageTwo = 1500;
 let stageThree = 1300;
 let stageFour = 1000;
 let stageFive = 700;
-let finalStage = 400;
+let stageSix = 400;
+let finalStage = 100;
 
 let home = document.getElementById("home");
 let time = document.getElementById("time");
@@ -159,7 +160,10 @@ document.addEventListener("keyup", (e) => {
       interval1 = setInterval(minusTime, stageFive);
     } else if (stageCounter == 5) {
       stopInterval();
+      interval1 = setInterval(minusTime, stageSix);
+    } else if (stageCounter == 6) {
       stage.innerText = "Final Stage";
+      stopInterval();
       interval1 = setInterval(minusTime, finalStage);
     }
   }
