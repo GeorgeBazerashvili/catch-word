@@ -63,17 +63,21 @@ let wordsArr = [
   "benefit",
 ];
 
+let finalScore = document.getElementById("finalscore");
+
 let randomNum = Math.floor(Math.random() * wordsArr.length);
 let randomWord = wordsArr[randomNum];
 
 let gameOverMenu = document.getElementById("gameover");
 
-let stageOne = 100;
-let stageTwo = 1300;
-let stageThree = 1000;
-let stageFour = 700;
-let stageFive = 400;
+let stageOne = 2000;
+let stageTwo = 1500;
+let stageThree = 1300;
+let stageFour = 1000;
+let stageFive = 700;
+let finalStage = 400;
 
+let home = document.getElementById("home");
 let time = document.getElementById("time");
 const input = document.getElementById("input");
 const words = document.getElementById("words");
@@ -89,6 +93,7 @@ words.innerText = randomWord;
 
 function stopInterval() {
   clearInterval(interval1);
+  gameOver();
 }
 
 function minusTime() {
@@ -105,18 +110,24 @@ let stageCounter = 0;
 
 document.addEventListener("keyup", (e) => {
   if (e.keyCode == 13) {
-    if (input.value == words.innerText) {
+    if (input.value !== words.innerText) {
+      time.style.color = "red";
+      time.style.transition = ".3s";
+      setTimeout(() => {
+        time.style.color = "";
+      }, 300);
+    } else if (input.value == words.innerText) {
       let p = document.createElement("p");
       time.append(p);
       p.innerText = +1;
       setTimeout(() => {
         p.style.display = "none";
       }, 700);
-      time.style.color = "green";
-      time.style.transition = ".5s";
+      time.style.color = "lime";
+      time.style.transition = ".3s";
       setTimeout(() => {
         time.style.color = "";
-      }, 700);
+      }, 300);
       input.value = "";
       let randomNum = Math.floor(Math.random() * wordsArr.length);
       let randomWord = wordsArr[randomNum];
@@ -132,23 +143,36 @@ document.addEventListener("keyup", (e) => {
         stage1++;
         stage.innerText = `Stage: ${stage1}`;
       }
+    }
 
-      if (stageCounter == 1) {
-        stopInterval();
-        interval1 = setInterval(minusTime, stageTwo);
-      } else if (stageCounter == 2) {
-        stopInterval();
-        interval1 = setInterval(minusTime, stageThree);
-      } else if (stageCounter == 3) {
-        stopInterval();
-        interval1 = setInterval(minusTime, stageFour);
-      } else if (stageCounter == 4) {
-        stopInterval();
-        interval1 = setInterval(minusTime, stageFive);
-      }
-      if (startTime == 0) {
-        gameOverMenu.style.visibility = "visible";
-      }
+    if (stageCounter == 1) {
+      stopInterval();
+      interval1 = setInterval(minusTime, stageTwo);
+    } else if (stageCounter == 2) {
+      stopInterval();
+      interval1 = setInterval(minusTime, stageThree);
+    } else if (stageCounter == 3) {
+      stopInterval();
+      interval1 = setInterval(minusTime, stageFour);
+    } else if (stageCounter == 4) {
+      stopInterval();
+      interval1 = setInterval(minusTime, stageFive);
+    } else if (stageCounter == 5) {
+      stopInterval();
+      stage.innerText = "Final Stage";
+      interval1 = setInterval(minusTime, finalStage);
     }
   }
 });
+
+function gameOver() {
+  if (startTime == 0) {
+    gameOverMenu.style.visibility = "visible";
+    document.body.style.background = "#0093E9";
+    stage.style.visibility = "hidden";
+    score.style.visibility = "hidden";
+    input.style.visibility = "hidden";
+    home.style.visibility = "hidden";
+    finalScore.innerText = `You Collected ${score1} Score`;
+  }
+}
