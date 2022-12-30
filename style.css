@@ -58,6 +58,13 @@ input {
     text-shadow: 2px 2px 2px black;
 }
 
+button:hover {
+    background-color: #3b99cf;
+    transition: .5s;
+    text-shadow: 2px 2px 2px black;
+    box-shadow: 2px 2px 2px black;
+}
+
 footer {
     position: absolute;
     bottom: 5px;
